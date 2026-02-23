@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onset Strategies LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:    #0a0f1e;
+    --navy2:   #0f1829;
+    --navy3:   #14213d;
+    --gold:    #c9a84c;
+    --gold2:   #e8c96b;
+    --silver:  #8ea1b8;
+    --light:   #d6e4f0;
+    --white:   #f0f4f8;
+    --accent:  #1e4976;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--navy);
+    color: var(--light);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ───── NAV ───── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 60px;
+    background: rgba(10,15,30,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .nav-logo span {
+    color: var(--white);
+    opacity: 0.7;
+    font-weight: 400;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--silver);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ───── HERO ───── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 10%;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(30,73,118,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy2) 50%, var(--navy3) 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold2);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 300;
+    color: var(--silver);
+    margin-bottom: 36px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: rgba(214,228,240,0.8);
+    max-width: 600px;
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 14px 36px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+
+  .btn-outline {
+    padding: 14px 36px;
+    background: transparent;
+    color: var(--light);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(214,228,240,0.3);
+    cursor: pointer;
+    transition: border-color 0.25s, color 0.25s, transform 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  /* ───── SECTION BASE ───── */
+  section { padding: 100px 10%; }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 28px 0;
+  }
+
+  /* ───── ABOUT ───── */
+  #about {
+    background: var(--navy2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-text p {
+    color: rgba(214,228,240,0.8);
+    font-size: 1.05rem;
+    margin-bottom: 18px;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .stat-card {
+    padding: 28px 24px;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(20,33,61,0.5);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .stat-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  /* ───── SERVICES ───── */
+  #services { background: var(--navy); }
+
+  .services-intro {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .service-card {
+    background: var(--navy2);
+    padding: 48px 36px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 0;
+    background: linear-gradient(to top, rgba(201,168,76,0.05), transparent);
+    transition: height 0.4s;
+  }
+
+  .service-card:hover {
+    border-color: var(--gold);
+    background: var(--navy3);
+  }
+
+  .service-card:hover::after { height: 100%; }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .service-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .service-desc {
+    font-size: 0.95rem;
+    color: rgba(214,228,240,0.7);
+    line-height: 1.75;
+  }
+
+  /* ───── EXPERTISE ───── */
+  #expertise {
+    background: var(--navy3);
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .expertise-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .domains-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .domain-tag {
+    padding: 12px 18px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--silver);
+    border: 1px solid rgba(142,161,184,0.25);
+    background: rgba(10,15,30,0.5);
+    transition: all 0.25s;
+  }
+
+  .domain-tag:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .competencies-list {
+    margin-top: 20px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .competency-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .comp-bullet {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .comp-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .comp-detail {
+    font-size: 0.9rem;
+    color: var(--silver);
+    line-height: 1.6;
+  }
+
+  /* ───── CLIENTS ───── */
+  #clients {
+    background: var(--navy2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    text-align: center;
+  }
+
+  .clients-header { max-width: 600px; margin: 0 auto 60px; }
+
+  .org-marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    margin-top: 40px;
+  }
+
+  .org-track {
+    display: flex;
+    gap: 60px;
+    width: max-content;
+    animation: scroll 25s linear infinite;
+  }
+
+  .org-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--silver);
+    white-space: nowrap;
+    padding: 12px 0;
+    transition: color 0.25s;
+  }
+
+  .org-item:hover { color: var(--gold); }
+
+  @keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ───── LEADERSHIP ───── */
+  #leadership { background: var(--navy); }
+
+  .leader-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .leader-card {
+    border: 1px solid rgba(201,168,76,0.2);
+    background: var(--navy2);
+    padding: 40px;
+    position: sticky;
+    top: 120px;
+  }
+
+  .leader-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .leader-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .leader-bio { font-size: 0.95rem; color: var(--silver); line-height: 1.8; }
+
+  .clearance-badge {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 6px 16px;
+    border: 1px solid var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .timeline { margin-top: 0; }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 30px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 148px;
+    top: 38px;
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+
+  .t-years {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    padding-top: 4px;
+    text-align: right;
+  }
+
+  .t-org {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .t-role {
+    font-size: 0.9rem;
+    color: var(--silver);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .t-desc { font-size: 0.92rem; color: rgba(214,228,240,0.7); line-height: 1.75; }
+
+  /* ───── EDUCATION ───── */
+  #education {
+    background: var(--navy2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1200px;
+    margin: 50px auto 0;
+  }
+
+  .edu-card {
+    padding: 32px 28px;
+    border: 1px solid rgba(201,168,76,0.15);
+    background: rgba(10,15,30,0.4);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .edu-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .edu-school {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .edu-detail { font-size: 0.88rem; color: var(--silver); }
+
+  /* ───── CONTACT ───── */
+  #contact {
+    background: var(--navy);
+    text-align: center;
+    padding-bottom: 120px;
+  }
+
+  .contact-inner { max-width: 640px; margin: 0 auto; }
+
+  .contact-inner p {
+    font-size: 1.05rem;
+    color: var(--silver);
+    margin-bottom: 40px;
+  }
+
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+
+  .contact-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  .contact-item strong { display: block; color: var(--gold); margin-bottom: 4px; }
+
+  /* ───── FOOTER ───── */
+  footer {
+    background: #060b14;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    padding: 32px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: rgba(142,161,184,0.5);
+  }
+
+  /* ───── ANIMATIONS ───── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ───── RESPONSIVE ───── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 30px; }
+    .nav-links { gap: 24px; }
+    section { padding: 70px 6%; }
+    .about-grid,
+    .leader-layout,
+    .expertise-layout { grid-template-columns: 1fr; gap: 50px; }
+    .services-grid,
+    .edu-grid { grid-template-columns: 1fr 1fr; }
+    .leader-card { position: static; }
+    .timeline-item { grid-template-columns: 100px 1fr; }
+    .timeline-item::before { left: 108px; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .services-grid,
+    .edu-grid,
+    .about-stats,
+    .domains-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Onset <span>Strategies</span> LLC</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Strategic Advisory · National Security · Emerging Technology</div>
+    <h1 class="hero-title">Where <em>Foresight</em><br>Meets Mission</h1>
+    <p class="hero-subtitle">National Security Strategy · Space Systems · Defense Innovation</p>
+    <p class="hero-desc">
+      Onset Strategies delivers the strategic clarity, technical depth, and foresight 
+      that government agencies, defense organizations, and technology companies need 
+      to navigate complex emerging threats and opportunities.
+    </p>
+    <div class="cta-row">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-outline">Engage Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid fade-in">
+    <div class="about-text">
+      <div class="section-label">About Onset Strategies</div>
+      <h2 class="section-title">Translating Complexity<br>Into Decisive Action</h2>
+      <div class="divider"></div>
+      <p>
+        Onset Strategies LLC is a strategic advisory firm specializing in 
+        national security, space and defense systems modernization, and emerging 
+        technology innovation. We deliver foresight-driven solutions that consider 
+        both the risks and opportunities stemming from rapid technological change 
+        and evolving defense policy.
+      </p>
+      <p>
+        We serve as trusted advisors to government agencies, defense organizations, 
+        and technology companies — helping leaders at every level translate strategic 
+        complexity into clear, actionable decision frameworks that accelerate mission impact.
+      </p>
+      <p>
+        Founded by a 20-year veteran of national security strategy at MITRE Corporation, 
+        Onset brings unmatched depth in strategic foresight methodologies, space systems 
+        architecture, AI policy, and cross-sector partnership development.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Years National Security Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">$80M+</div>
+        <div class="stat-label">Portfolio Value Managed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="font-size:1.6rem;">Cleared</div>
+        <div class="stat-label">Active U.S. Security Clearance</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Federal Organizations Served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro fade-in">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Strategic Services</h2>
+  </div>
+  <div class="services-grid fade-in">
+    <div class="service-card">
+      <span class="service-icon">◈</span>
+      <div class="service-title">Strategic Foresight & Scenario Planning</div>
+      <p class="service-desc">
+        Rigorous foresight methodologies — including Delphi, Threatcasting, and Causal Layered 
+        Analysis — to help leadership teams anticipate disruption, pressure-test assumptions, 
+        and develop adaptable strategy for an uncertain future.
+      </p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">◉</span>
+      <div class="service-title">Space & Defense Systems Modernization</div>
+      <p class="service-desc">
+        Architecture assessment, requirements development, and system-of-systems integration 
+        guidance for space systems and defense programs. Bridging technical complexity with 
+        strategic objectives for DoD, IC, and commercial space clients.
+      </p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">⬡</span>
+      <div class="service-title">Emerging Technology Innovation</div>
+      <p class="service-desc">
+        From AI policy and autonomous systems to biotechnology and quantum, we translate 
+        emerging technology landscapes into coherent investment strategies, policy frameworks, 
+        and operational transitions tailored for national security environments.
+      </p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">◇</span>
+      <div class="service-title">Executive Advisory & Decision Support</div>
+      <p class="service-desc">
+        C-suite and flag officer advisory services delivering data-driven insights, briefings, 
+        and analytic products that support high-stakes decisions across government, defense 
+        industry, and technology sectors.
+      </p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">⊕</span>
+      <div class="service-title">Program & Portfolio Strategy</div>
+      <p class="service-desc">
+        Strategic program management support including governance design, portfolio 
+        rationalization, risk analysis, and stakeholder alignment across complex multi-
+        organizational environments.
+      </p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">◎</span>
+      <div class="service-title">Cross-Sector Partnership Development</div>
+      <p class="service-desc">
+        Building enduring partnerships across government, industry, and academia to drive 
+        collaborative innovation. Facilitating shared frameworks and alignment strategies 
+        that accelerate technology transition and mission outcomes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="expertise-layout fade-in">
+    <div>
+      <div class="section-label">Domain Coverage</div>
+      <h2 class="section-title">Technology<br>Domains</h2>
+      <div class="divider"></div>
+      <p style="color: var(--silver); font-size: 0.95rem;">
+        Deep expertise spanning the critical intersections of national security, 
+        emerging technology, and strategic policy.
+      </p>
+      <div class="domains-grid">
+        <div class="domain-tag">Space Systems</div>
+        <div class="domain-tag">Artificial Intelligence</div>
+        <div class="domain-tag">Autonomous Systems</div>
+        <div class="domain-tag">Biotechnology</div>
+        <div class="domain-tag">Quantum Technologies</div>
+        <div class="domain-tag">Information Operations</div>
+        <div class="domain-tag">Supply Chain Security</div>
+        <div class="domain-tag">Cyber & Resilience</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">Core Competencies</div>
+      <h2 class="section-title" style="font-size: 1.6rem;">Full-Spectrum<br>Strategic Capability</h2>
+      <div class="competencies-list">
+        <div class="competency-row">
+          <div class="comp-bullet"></div>
+          <div>
+            <div class="comp-title">Strategy, Policy & Foresight</div>
+            <div class="comp-detail">National Security Strategy & Defense Policy · Strategic Foresight · Scenario Planning · Risk Analysis</div>
+          </div>
+        </div>
+        <div class="competency-row">
+          <div class="comp-bullet"></div>
+          <div>
+            <div class="comp-title">Executive Leadership & Strategic Influence</div>
+            <div class="comp-detail">C-Suite & Flag Officer Advisory · Enterprise Stakeholder Management (DoD, IC, Combatant Commands) · Cross-Sector Partner Alignment</div>
+          </div>
+        </div>
+        <div class="competency-row">
+          <div class="comp-bullet"></div>
+          <div>
+            <div class="comp-title">Program Execution & Systems Delivery</div>
+            <div class="comp-detail">Multi-Million Dollar Portfolio Management · Systems Engineering · Architecture Development · System-of-Systems Integration</div>
+          </div>
+        </div>
+        <div class="competency-row">
+          <div class="comp-bullet"></div>
+          <div>
+            <div class="comp-title">Foresight & Strategy Methods</div>
+            <div class="comp-detail">Delphi · Threatcasting · Causal Layered Analysis · Advanced Analytics · Tableau · MS Project · Jira</div>
+          </div>
+        </div>
+        <div class="competency-row">
+          <div class="comp-bullet"></div>
+          <div>
+            <div class="comp-title">Innovation Management</div>
+            <div class="comp-detail">Technology Transition · Innovation Ecosystem Design · AI Workforce Development · Future Ready Forum</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS / ORGS SERVED -->
+<section id="clients">
+  <div class="clients-header fade-in">
+    <div class="section-label" style="justify-content:center;">Organizations Served</div>
+    <h2 class="section-title">Trusted Across<br>the National Security Base</h2>
+    <p style="color: var(--silver); margin-top: 16px; font-size: 1rem;">
+      Advisory and program delivery experience spanning the full spectrum of U.S. national security — 
+      from intelligence community and combatant commands to federal R&D and commercial space.
+    </p>
+  </div>
+  <div class="org-marquee">
+    <div class="org-track">
+      <span class="org-item">DHS CISA</span>
+      <span class="org-item">NORAD / USNORTHCOM</span>
+      <span class="org-item">U.S. Space Force</span>
+      <span class="org-item">NRO</span>
+      <span class="org-item">NSF</span>
+      <span class="org-item">MITRE Corporation</span>
+      <span class="org-item">DoD Programs</span>
+      <span class="org-item">Intelligence Community</span>
+      <span class="org-item">DHS CISA</span>
+      <span class="org-item">NORAD / USNORTHCOM</span>
+      <span class="org-item">U.S. Space Force</span>
+      <span class="org-item">NRO</span>
+      <span class="org-item">NSF</span>
+      <span class="org-item">MITRE Corporation</span>
+      <span class="org-item">DoD Programs</span>
+      <span class="org-item">Intelligence Community</span>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="leader-layout fade-in">
+    <div>
+      <div class="section-label">Our Principal</div>
+      <div class="leader-card">
+        <div class="leader-name">Managing Director</div>
+        <div class="leader-title">Onset Strategies LLC · Houston, TX & Washington, D.C.</div>
+        <p class="leader-bio">
+          Visionary national security leader with 20+ years driving technical excellence 
+          across multi-disciplinary teams and complex defense programs. Expert in strategic 
+          foresight, systems modernization, and innovation at the nexus of emerging technology 
+          and defense policy. Trusted advisor to senior government and military leaders, shaping 
+          critical decisions on space architectures and in other warfighting domains.
+        </p>
+        <div class="clearance-badge">Active U.S. Security Clearance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner fade-in">
+    <div class="section-label" style="justify-content:center;">Get In Touch</div>
+    <h2 class="section-title">Ready to Engage</h2>
+    <div class="divider" style="margin: 28px auto;"></div>
+    <p>
+      Whether you're navigating a complex strategic challenge, planning a technology modernization 
+      effort, or seeking an experienced advisor to inform senior leadership decisions — 
+      Onset Strategies is ready to help.
+    </p>
+    <a href="/cdn-cgi/l/email-protection#147d7a727b547b7a677160676066756071737d71673a777b79" class="btn-primary">Start a Conversation</a>
+    <div class="contact-info">
+      <div class="contact-item"><strong>Location</strong>Houston, TX · Washington, D.C.</div>
+      <div class="contact-item"><strong>Clearance</strong>Active U.S. Security Clearance</div>
+      <div class="contact-item"><strong>Focus</strong>National Security · Space · AI</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Onset Strategies LLC</div>
+  <div class="footer-copy">© 2025 Onset Strategies LLC · Houston, TX · All rights reserved</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+        observer.unobserve(el.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth active nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 160) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--gold)' : '';
+    });
+  });
+</script>
+</body>
+</html>
